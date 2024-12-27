@@ -5,7 +5,10 @@ self.addEventListener('install', (event) => {
         '/',
         '/index.html',
         '/android-chrome-192x192.png',
-        '/android-chrome-512x512.png'
+        '/android-chrome-512x512.png',
+        '/Lofi.mp3',
+        'Dia1tr.png',
+        'pinguin.png'
       ]);
     })
   );
