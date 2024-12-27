@@ -2,7 +2,7 @@
   "name": "kerstgame",
   "short_name": "kerst",
   "description": "online kerst wereld",
-  "start_url": "/index.html",
+  "start_url": "/kerstgame/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
