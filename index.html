@@ -13,7 +13,7 @@ position:absolute;
 top:0px;
 left:0px;
 transition: 0.15s;
-background:url(pinguin.png);
+background:url(/pinguin.png);
 background-size: cover;
 background-color:rgba(0,0,0,0);
 }
@@ -22,7 +22,7 @@ background-color:rgba(0,0,0,0);
 background-color:bisque;
 top:0px;
 left:0px;
-background:url(Dia1tr.PNG);
+background:url(/Dia1tr.PNG);
 background-size: cover;
 background-color:rgba(0,0,0,0);
 }
@@ -111,22 +111,30 @@ font-weight:bold;
 <button onclick="document.getElementById('info').style.display = 'none';playerselect();"id="joinbut">join</button>
 </div>
 <div id="speelveld">
-<div class="kerstboom"></div>
+<!--<div class="kerstboom"></div>-->
 <div class="div" id="player1"></div>
 <div class="div" id="player2"></div>
 </div>
 <audio loop="true"id = "Any">
-    <source src = "Lofi.mp3">
+    <source src = "/Lofi.mp3">
 </audio>
 <script>
     function muziek(){
     var audio = document.getElementById("Any");
     audio.play();
 }
+let lastMoveTime = 0; // Houdt de tijd bij van de laatste beweging
+const moveCooldown = 350; 
 var tp;
 var lp;
 document.addEventListener("keydown", function(event) {
   if (event.key === "ArrowUp") {
+    const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
     var selectedPlayer = document.getElementById(`player${playernum}`);
     var computedStyle = window.getComputedStyle(selectedPlayer);
     tp = computedStyle.top;
@@ -142,6 +150,12 @@ document.addEventListener("keydown", function(event) {
   });
   document.addEventListener("keydown", function(event) {
   if (event.key === "ArrowDown") {
+    const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
     var selectedPlayer = document.getElementById(`player${playernum}`);
     var computedStyle = window.getComputedStyle(selectedPlayer);
     tp = computedStyle.top;
@@ -157,6 +171,12 @@ document.addEventListener("keydown", function(event) {
   });
   document.addEventListener("keydown", function(event) {
   if (event.key === "ArrowRight") {
+    const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
     var selectedPlayer = document.getElementById(`player${playernum}`);
     var computedStyle = window.getComputedStyle(selectedPlayer);
     lp = computedStyle.left;
@@ -173,6 +193,12 @@ document.addEventListener("keydown", function(event) {
   });
   document.addEventListener("keydown", function(event) {
   if (event.key === "ArrowLeft") {
+    const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
     var selectedPlayer = document.getElementById(`player${playernum}`);
     var computedStyle = window.getComputedStyle(selectedPlayer);
     lp = computedStyle.left;
@@ -218,7 +244,7 @@ fetch(`https://surf-wild-editorial.glitch.me/${andplayernum}`, requestOptions)
   }
   anderespelerpos();
 
-        setInterval(anderespelerpos, 4000);
+        setInterval(anderespelerpos, 3000);
 
   function postspelerpos(){
     const myHeaders = new Headers();
