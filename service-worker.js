@@ -2,7 +2,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('v1').then((cache) => {
       return cache.addAll([
-        '/kersgame/index.html',
+        '/kerstgame/index.html',
         '/kerstgame/android-chrome-192x192.png',
         '/kerstgame/android-chrome-512x512.png',
         '/kerstgame/Lofi.mp3',
