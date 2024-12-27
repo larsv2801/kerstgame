@@ -2,13 +2,12 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('v1').then((cache) => {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/android-chrome-192x192.png',
-        '/android-chrome-512x512.png',
-        '/Lofi.mp3',
-        'Dia1tr.png',
-        'pinguin.png'
+        '/kersgame/index.html',
+        '/kerstgame/android-chrome-192x192.png',
+        '/kerstgame/android-chrome-512x512.png',
+        '/kerstgame/Lofi.mp3',
+        '/kerstgame/Dia1tr.png',
+        '/kerstgame/pinguin.png'
       ]);
     })
   );
