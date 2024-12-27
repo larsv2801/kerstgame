@@ -100,6 +100,78 @@ border:none;
 outline:none;
 font-weight:bold;
 }
+.rechtknop{
+display:none;
+width:15vw;
+height:15vw;
+border-radius:15px;
+}
+.linkknop{
+display:none;
+width:15vw;
+height:15vw;
+border-radius:15px;
+}
+@media (max-width: 950px) {
+
+body{
+width:150vw;
+height:150vh;
+}
+#speelveld{
+border-radius:15px;
+width:640px;
+height:480px;
+background-color:cadetblue;
+position:absolute;
+top:75%;
+left:75%;
+transform: translate(-50%, -50%);
+background:url("https://slm-assets.secondlife.com/assets/24859758/view_large/Snow___grass_texture.jpg?1571939022");
+z-index:5;
+}
+.info{
+width:35vw;
+height:15vw;
+border-radius:15px;
+background-color:#4b7f49;
+position:absolute;
+top:75%;
+left:75%;
+transform:translate(-50%, -50%);
+z-index:999;
+}
+.rechtknop{
+display:block;
+width:15vw;
+height:15vw;
+border-radius:15px;
+position:absolute;
+top:85%;
+left:130%;
+border:none;
+outline:none;
+transform:translate(-50%, -50%);
+}
+.linkknop{
+display:block;
+width:15vw;
+height:15vw;
+border-radius:15px;
+position:absolute;
+top:85%;
+left:20%;
+border:none;
+outline:none;
+transform:translate(-50%, -50%);
+}
+#bovknop{
+top:50%;
+}
+#linknop{
+top:50%;
+}
+}
 </style>
 </head>
 <body onload="muziek()">
@@ -110,6 +182,10 @@ font-weight:bold;
 </select>
 <button onclick="document.getElementById('info').style.display = 'none';playerselect();"id="joinbut">join</button>
 </div>
+<button onclick="nrboven()" id="bovknop" class="rechtknop">⬆️</button>
+<button onclick="nrrechts()"  class="rechtknop">➡️</button>
+<button onclick="nronder()"  class="linkknop">⬇️</button>
+<button onclick="nrlinks()"  id="linknop" class="linkknop">⬅️</button>
 <div id="speelveld">
 <!--<div class="kerstboom"></div>-->
 <div class="div" id="player1"></div>
@@ -267,9 +343,6 @@ fetch(`https://surf-wild-editorial.glitch.me/${playernum}`, requestOptions)
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
   }
-</script>
-
-<script>
 function losglitchop(){
   const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -291,6 +364,89 @@ fetch(`https://surf-wild-editorial.glitch.me/${playernum}`, requestOptions)
 .then((result) => console.log(result))
 .catch((error) => console.error(error));
 }
+
+function nrlinks(){
+  const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
+    var selectedPlayer = document.getElementById(`player${playernum}`);
+    var computedStyle = window.getComputedStyle(selectedPlayer);
+    lp = computedStyle.left;
+    lp = parseFloat(lp);
+    lp = parseFloat(window.getComputedStyle(document.getElementById(`player${playernum}`)).left);
+    console.log(lp);
+    lp -= 80;
+    if(lp < 0){
+    lp = 0;
+    }
+    selectedPlayer.style.left = lp + "px";
+    postspelerpos();
+}
+
+function nrrechts(){
+  const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
+    var selectedPlayer = document.getElementById(`player${playernum}`);
+    var computedStyle = window.getComputedStyle(selectedPlayer);
+    lp = computedStyle.left;
+    lp = parseFloat(lp);
+    lp = parseFloat(window.getComputedStyle(document.getElementById(`player${playernum}`)).left);
+    console.log(lp);
+    lp += 80;
+    if(lp > 560){
+    lp = 560;
+    }
+    selectedPlayer.style.left = lp + "px";
+    postspelerpos();
+}
+
+function nrboven(){
+  const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
+    var selectedPlayer = document.getElementById(`player${playernum}`);
+    var computedStyle = window.getComputedStyle(selectedPlayer);
+    tp = computedStyle.top;
+    tp = parseFloat(tp);
+    tp = parseFloat(window.getComputedStyle(document.getElementById(`player${playernum}`)).top);
+    tp -= 80;
+    if(tp < 0){
+    tp = 0;
+    }// Haal de daadwerkelijke 'top'-waarde op
+    selectedPlayer.style.top = tp + "px";
+    postspelerpos();
+}
+
+function nronder(){
+  const now = Date.now(); // Huidige tijd
+  if (now - lastMoveTime < moveCooldown) {
+    return; // Als de cooldown nog niet voorbij is, doe niets
+  }
+
+  lastMoveTime = now;
+    var selectedPlayer = document.getElementById(`player${playernum}`);
+    var computedStyle = window.getComputedStyle(selectedPlayer);
+    tp = computedStyle.top;
+    tp = parseFloat(tp);
+    tp = parseFloat(window.getComputedStyle(document.getElementById(`player${playernum}`)).top);
+    tp += 80;
+    if(tp > 400){
+    tp = 400;
+    }
+    selectedPlayer.style.top = tp + "px";
+    postspelerpos();
+}
+
 </script>
 </body>
 </html>
