@@ -737,6 +737,12 @@ const player = scores.find(p => p.name === "Player 2");
 setTimeout(getscores,1000);
 
 setInterval(getscores, 3000);
+
+    if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(err => console.error('Service Worker Registration Failed:', err));
+}
 </script>
 </body>
 </html>
