@@ -1,23 +1,25 @@
 {
-  "name": "kerstgame",
-  "short_name": "kerst",
-  "description": "online kerst game",
-  "start_url": "/kerstgame/index.html",
-  "background_color": "#822a29",
-  "theme_color": "#822a29",
-  "display": "fullscreen",
-  "orientation": "landscape",
-  "categories": ["games"],
-  "icons": [
-    {
-      "src": "logo192.jpg",
-      "sizes": "192x192",
-      "type": "image/jpeg"
-    },
-    {
-      "src": "logo512.jpg",
-      "sizes": "512x512",
-      "type": "image/jpeg"
-    }
-  ]
+    "name": "kerstgame",
+    "short_name": "kerst",
+    "description": "online kerst game",
+    "start_url": "/kerstgame/index.html",
+    "background_color": "#822a29",
+    "theme_color": "#822a29",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "categories": [
+        "games"
+    ],
+    "icons": [
+        {
+            "src": "logo192.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "logo512.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg"
+        }
+    ]
 }
