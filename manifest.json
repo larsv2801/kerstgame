@@ -6,6 +6,8 @@
   "display": "standalone",
   "background_color": "#822a29",
   "theme_color": "#822a29",
+  "display": "fullscreen",
+  "orientation": "landscape",
   "icons": [
     {
       "src": "logo192.jpg",
