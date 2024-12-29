@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
         '/kerstgame/index.html',
         '/kerstgame/android-chrome-192x192.png',
         '/kerstgame/android-chrome-512x512.png',
-        '/kerstgame/Dia1tr.png',
+        '/kerstgame/Dia1tr.PNG',
         '/kerstgame/pinguin22.png',
         '/kerstgame/pinguin.png',
          '/kerstgame/manifest.json'
