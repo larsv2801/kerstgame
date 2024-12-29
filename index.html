@@ -745,21 +745,6 @@ setInterval(getscores, 3000);
     .catch(err => console.error('Service Worker Registration Failed:', err));
 }
 
-const fullscreenBtn = document.getElementById('joinbut');
-
-    fullscreenBtn.addEventListener('click', () => {
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen()
-          .then(() => {
-            if (screen.orientation && screen.orientation.lock) {
-              return screen.orientation.lock('landscape');
-            }
-          })
-          .catch(err => {
-            console.error('Fout bij vergrendelen van scherm:', err);
-          });
-      }
-    });
 </script>
 </body>
 </html>
