@@ -7,9 +7,6 @@
     "theme_color": "#822a29",
     "display": "fullscreen",
     "orientation": "landscape",
-    "categories": [
-        "games"
-    ],
     "icons": [
         {
             "src": "logo192.jpg",
