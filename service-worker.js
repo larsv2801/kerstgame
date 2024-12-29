@@ -9,8 +9,8 @@ self.addEventListener('install', (event) => {
         '/kerstgame/pinguin22.png',
         '/kerstgame/pinguin.png',
          '/kerstgame/manifest.json',
-        '/kerstgame/logo.jpg192',
-        '/kerstgame/logo.jpg512'
+        '/kerstgame/logo192.jpg',
+        '/kerstgame/logo512.jpg'
       ]);
     })
   );
