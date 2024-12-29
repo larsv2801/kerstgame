@@ -1,19 +1,19 @@
 {
   "name": "kerstgame",
   "short_name": "kerst",
-  "description": "online kerst wereld",
+  "description": "online kerst game",
   "start_url": "/kerstgame/index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#822a29",
+  "theme_color": "#822a29",
   "icons": [
     {
-      "src": "android-chrome-192x192.png",
+      "src": "logo192.jpg",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "android-chrome-512x512.png",
+      "src": "logo512.jpg",
       "sizes": "512x512",
       "type": "image/png"
     }
