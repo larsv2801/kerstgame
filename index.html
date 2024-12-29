@@ -3,6 +3,43 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+    #scoreboard {
+      width: 300px;
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      position:absolute;
+      top:1vw;
+      left:1vw;
+      font-family:arial;
+      transition:0.4s;
+      z-index:9;
+    }
+
+    #scoreboard h2 {
+      margin: 0;
+      padding: 16px;
+      background-color: #0078D7;
+      color: white;
+      text-align: center;
+      transition:0.4s;
+    }
+
+    #scoreboard ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      transition:0.4s;
+    }
+
+    #scoreboard li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-bottom: 1px solid #ddd;
+      transition:0.4s;
+    }
 .div{
 width:80px;
 height:80px;
@@ -38,10 +75,23 @@ transform: translate(-50%, -50%);
 background:url("https://slm-assets.secondlife.com/assets/24859758/view_large/Snow___grass_texture.jpg?1571939022");
 z-index:5;
 }
+#speelveld2{
+border-radius:15px;
+width:640px;
+height:480px;
+background-color:cadetblue;
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%, -50%);
+background-color:rgba(0,0,0,0);
+z-index:6;
+}
 body{
 background:url("https://pembertonholmessaltspring.com/wp-content/uploads/2024/01/Cozy-Living-Room.webp");
 background-size:cover;
 background-position: left 50% top 30%;
+
 }
 .kerstboom{
 position:absolute;
@@ -112,11 +162,21 @@ width:15vw;
 height:15vw;
 border-radius:15px;
 }
+#cadeau{
+width:80px;
+height:80px;
+background:url("https://png.pngtree.com/png-clipart/20240101/original/pngtree-top-view-of-christmas-or-other-holiday-handmade-present-box-package-png-image_13987290.png");
+background-size:cover;
+background-color:rgba(0,0,0,0);
+position:absolute;
+top:0;
+left:0;
+}
 @media (max-width: 950px) {
 
 body{
-width:200vw;
-height:200vh;
+width:150vw;
+height:150vh;
 }
 #speelveld{
 border-radius:15px;
@@ -124,34 +184,48 @@ width:640px;
 height:480px;
 background-color:cadetblue;
 position:absolute;
-top:100%;
-left:100%;
+top:75%;
+left:75%;
 transform: translate(-50%, -50%);
 background:url("https://slm-assets.secondlife.com/assets/24859758/view_large/Snow___grass_texture.jpg?1571939022");
 z-index:5;
 }
+#speelveld2{
+border-radius:15px;
+width:640px;
+height:480px;
+background-color:cadetblue;
+position:absolute;
+top:75%;
+left:75%;
+transform: translate(-50%, -50%);
+background:rgba(0,0,0,0);
+z-index:6;
+}
 .info{
-width:38vw;
-height:18vw;
+width:35vw;
+height:15vw;
 border-radius:15px;
 background-color:#4b7f49;
 position:absolute;
-top:100%;
-left:100%;
+top:75%;
+left:75%;
 transform:translate(-50%, -50%);
 z-index:999;
 }
 .rechtknop{
 display:block;
+padding:0;
 width:15vw;
 height:15vw;
 border-radius:15px;
 position:absolute;
-top:135%;
-left:170%;
+top:85%;
+left:130%;
 border:none;
 outline:none;
 transform:translate(-50%, -50%);
+font-size:5vw;
 }
 .linkknop{
 display:block;
@@ -159,23 +233,30 @@ width:15vw;
 height:15vw;
 border-radius:15px;
 position:absolute;
-top:135%;
+top:85%;
 left:20%;
 border:none;
 outline:none;
 transform:translate(-50%, -50%);
+font-size:5vw;
 }
 #bovknop{
-top:55%;
+top:50%;
 }
 #linknop{
-top:55%;
+top:50%;
 }
 }
 </style>
-  <link rel="manifest" href="/kerstgame/manifest.json">
 </head>
-<body onload="muziek()">
+<body onload="muziek(),hoelaatishet()">
+  <div id="scoreboard">
+    <h2>Scoreboard</h2>
+    <ul id="players">
+      <li><span>Player 1</span> <span>0</span></li>
+      <li><span>Player 2</span> <span>0</span></li>
+    </ul>
+  </div>
 <div id="info"class="info">
 <select id="selecter">
   <option>player 1</option>
@@ -187,18 +268,24 @@ top:55%;
 <button onclick="nrrechts()"  class="rechtknop">➡️</button>
 <button onclick="nronder()"  class="linkknop">⬇️</button>
 <button onclick="nrlinks()"  id="linknop" class="linkknop">⬅️</button>
+<div id="speelveld2">
+  <div id="cadeau"></div>
+</div>
 <div id="speelveld">
 <!--<div class="kerstboom"></div>-->
+
 <div class="div" id="player1"></div>
 <div class="div" id="player2"></div>
 </div>
 <audio loop="true"id = "Any">
-    <source src="https://larsv2801.github.io/kerstgame/Winters_dream (1).mp3">
+    <source src = "https://larsv2801.github.io/kerstgame/Winters_dream%20(1).mp3">
 </audio>
 <script>
     function muziek(){
     var audio = document.getElementById("Any");
     audio.play();
+    setInterval(opgepakt,9800);
+    setInterval(anderespelerpos,9500);
 }
 let lastMoveTime = 0; // Houdt de tijd bij van de laatste beweging
 const moveCooldown = 350; 
@@ -290,7 +377,8 @@ document.addEventListener("keydown", function(event) {
     postspelerpos();
   }
   });
-  var player = "player 1";
+  var player = "Player 1";
+  var andplayer = "Player 2"
   var playernum;
   var andplayernum;
   function playerselect(){
@@ -298,12 +386,19 @@ document.addEventListener("keydown", function(event) {
   if (player === "player 1") {
   playernum = 1;
   andplayernum = 2;
+  player = "Player 1";
+  andplayer = "Player 2";
   } else {
+  player = "Player 2";
+  andplayer = "Player 1";
   playernum = 2;
   andplayernum = 1;
   }
   losglitchop();
   }
+  var andx;
+  var andy;
+  var andscore;
   function anderespelerpos(){
     console.log(andplayernum);
     const requestOptions = {
@@ -316,6 +411,8 @@ fetch(`https://surf-wild-editorial.glitch.me/${andplayernum}`, requestOptions)
   .then((result) => {
     document.getElementById(`player${andplayernum}`).style.left = `${result.x}`+ "px";
     document.getElementById(`player${andplayernum}`).style.top = `${result.y}`+ "px";
+    andx = `${result.x}`;
+    andy = `${result.y}`;
           })
   .catch((error) => console.error(error));
   }
@@ -323,13 +420,14 @@ fetch(`https://surf-wild-editorial.glitch.me/${andplayernum}`, requestOptions)
 
         setInterval(anderespelerpos, 3000);
 
-  function postspelerpos(){
+        function postspelerpos(){
+         // Voeg een willekeurige score toe
     const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
 const raw = JSON.stringify({
   "x": lp,
-  "y": tp
+  "y": tp,
 });
 
 const requestOptions = {
@@ -344,6 +442,7 @@ fetch(`https://surf-wild-editorial.glitch.me/${playernum}`, requestOptions)
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
   }
+
 function losglitchop(){
   const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -447,15 +546,197 @@ function nronder(){
     selectedPlayer.style.top = tp + "px";
     postspelerpos();
 }
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/kerstgame/service-worker.js').then((registration) => {
-      console.log('Service Worker geregistreerd met scope:', registration.scope);
-    }).catch((error) => {
-      console.log('Service Worker registratie mislukt:', error);
-    });
-  });
+
+const xposities = [
+  400, 240, 560, 160, 80, 480, 320, 160, 560, 240, 
+  80, 400, 560, 320, 480, 80, 0, 0, 240, 480, 
+  400, 160, 0, 240, 480, 320, 80, 560, 400, 160, 
+  480, 320, 3200, 1920, 560, 160, 80, 480, 320, 160, 
+  560, 240, 80, 400, 480, 320, 560, 80, 0, 0, 
+  240, 480, 400, 160, 0, 240, 560, 320, 80, 560, 
+  400, 160
+];
+const yposities = [0, 400, 240, 320, 80, 160, 240, 320, 400, 80, 160, 400, 80, 400, 80, 240, 320, 160, 0, 240, 0, 400, 0, 400, 160, 240, 80, 240, 320, 160, 320, 0, 400, 80, 240, 160, 0, 400, 160, 0, 320, 240, 80, 0, 160, 80, 240, 320, 0, 320, 400, 160, 80, 240, 400, 0, 320, 240, 0, 80, 160, 400, 80, 400, 160];
+var hoeveelste = 0;
+var xp;
+var yp;
+
+function hoelaatishet(){
+//const myTimeout = setTimeout(opgepakt, 7000);
+const m = new Date();
+const minuten = m.getMinutes();
+const d = new Date();
+const seconden = d.getSeconds();
+
+if (minuten === 10 || minuten === 20 || minuten === 30 || minuten  === 40 || minuten === 50 || minuten === 0 && seconden === 0){
+hoeveelste = 0;
 }
+if (seconden === 10 || seconden === 20 || seconden === 30 || seconden === 40 || seconden === 50 || seconden === 0){
+hoeveelste = seconden/10;
+var selected = document.getElementById("cadeau");
+yp = yposities[hoeveelste];
+xp = xposities[hoeveelste];
+selected.style.top = yp + "px";
+selected.style.left = xp + "px";
+}
+
+}
+setInterval(hoelaatishet,1000);
+
+function opgepakt(){
+console.log(lp);
+console.log(xp);
+console.log(tp);
+console.log(yp);
+if(tp===yp && xp === lp){
+updateScore(player);
+console.log("punt");
+}
+/*if(andy == yp && andx == xp){
+updateScore(andplayer);
+console.log("andpunt");
+}*/
+}
+function leaderboard(){}
+
+const scores = [
+      { name: 'Player 1', score: 0 },
+      { name: 'Player 2', score: 0 }
+    ];
+
+    function updateScore(playername) {
+      const player = scores.find(p => p.name === playername);
+      if (player) {
+        player.score = parseFloat(player.score);
+        player.score += 1;
+         // Voeg een willekeurige score toe
+      }
+
+      // Sorteer de spelers op score (hoogste eerst)
+      scores.sort((a, b) => b.score - a.score);
+
+      // Update het scoreboard
+      const playersList = document.getElementById('players');
+      playersList.innerHTML = '';
+      scores.forEach(player => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${player.name}</span> <span>${player.score}</span>`;
+        playersList.appendChild(li);
+      });
+      postscores();
+    }
+  
+    /*function setScore(playerName, newScore) {
+  // Vind de speler in de scores array
+  const player = scores.find(p => p.name === playerName);
+  
+  if (player) {
+    // Stel de nieuwe score in
+    player.score = newScore;
+  }
+
+  // Sorteer de spelers op score (hoogste eerst)
+  scores.sort((a, b) => b.score - a.score);
+
+  // Update het scoreboard
+  const playersList = document.getElementById('players');
+  playersList.innerHTML = '';
+  scores.forEach(player => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${player.name}</span> <span>${player.score}</span>`;
+    playersList.appendChild(li);
+  });
+}*/
+
+function postscores(){
+  const playerr = scores.find(p => p.name === player);
+  if (player === "Player 1"){
+  var sc1 = playerr.score;
+  } else {
+  var sc2 = playerr.score;
+  }
+  /*const playerrr = scores.find(p => p.name === andplayer);
+  if (andplayer === "Player 1"){
+  var sc1 = playerrr.score;
+  } else {
+  var sc2 = playerrr.score;
+  }*/
+  const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+const raw = JSON.stringify({
+  "score1": sc1,
+  "score2": sc2
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://broad-bramble-maraca.glitch.me/1", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+}
+postscores();
+
+//setInterval(postscores, 3000);
+
+function getscores(){
+  const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+};
+
+fetch("https://broad-bramble-maraca.glitch.me/1", requestOptions)
+.then((response) => response.json())
+.then((result) => {
+  const playe = scores.find(p => p.name === "Player 1");
+  
+  if (playe) {
+    // Stel de nieuwe score in
+    playe.score = `${result.score1}`;
+  }
+
+  // Sorteer de spelers op score (hoogste eerst)
+  scores.sort((a, b) => b.score - a.score);
+
+  // Update het scoreboard
+  const playerList = document.getElementById('players');
+  playerList.innerHTML = '';
+  scores.forEach(player => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${player.name}</span> <span>${player.score}</span>`;
+    playerList.appendChild(li);
+  });
+
+const player = scores.find(p => p.name === "Player 2");
+  
+  if (player) {
+    // Stel de nieuwe score in
+    player.score = `${result.score2}`;
+  }
+
+  // Sorteer de spelers op score (hoogste eerst)
+  scores.sort((a, b) => b.score - a.score);
+
+  // Update het scoreboard
+  const playersList = document.getElementById('players');
+  playersList.innerHTML = '';
+  scores.forEach(player => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${player.name}</span> <span>${player.score}</span>`;
+    playersList.appendChild(li);
+  });
+})
+  .catch((error) => console.error(error));
+}
+setTimeout(getscores,1000);
+
+setInterval(getscores, 3000);
 </script>
 </body>
 </html>
