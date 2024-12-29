@@ -7,7 +7,7 @@
   "background_color": "#822a29",
   "theme_color": "#822a29",
   "display": "fullscreen",
-  "orientation": "landscape",
+  "orientation": "landscape-primary",
   "icons": [
     {
       "src": "logo192.jpg",
