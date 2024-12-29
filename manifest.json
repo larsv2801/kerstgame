@@ -3,11 +3,11 @@
   "short_name": "kerst",
   "description": "online kerst game",
   "start_url": "/kerstgame/index.html",
-  "display": "standalone",
   "background_color": "#822a29",
   "theme_color": "#822a29",
   "display": "fullscreen",
-  "orientation": "landscape-primary",
+  "orientation": "landscape",
+  "categories": ["games"],
   "icons": [
     {
       "src": "logo192.jpg",
