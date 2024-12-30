@@ -5,7 +5,7 @@
     "start_url": "/kerstgame/index.html",
     "background_color": "#822a29",
     "theme_color": "#822a29",
-    "display": "fullscreen",
+    "display": "standalone",
     "orientation": "landscape",
     "icons": [
         {
