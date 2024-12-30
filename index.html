@@ -107,7 +107,7 @@ background-size:cover;
 width:25vw;
 height:10vw;
 border-radius:15px;
-background-color:#4b7f49;
+background-color:white;
 position:absolute;
 top:50%;
 left:50%;
@@ -121,6 +121,7 @@ top:50%;
 left:50%;
 transform:translate(-50%, -50%);
 font-weight:bold;
+border: 1px solid #0078D7;
 }
 #joinbut{
 position:absolute;
@@ -128,7 +129,7 @@ top:90%;
 left:50%;
 transform:translate(-50%, -50%);
 width:90%;
-background-color:#a14237;
+background-color:#0078D7;
 color:white;
 border-radius:5px;
 border:none;
@@ -286,8 +287,8 @@ top:50%;
     function muziek(){
     var audio = document.getElementById("Any");
     audio.play();
-    setInterval(opgepakt,9800);
-    setInterval(anderespelerpos,9500);
+    setInterval(opgepakt,4800);
+    setInterval(anderespelerpos,4500);
 }
 let lastMoveTime = 0; // Houdt de tijd bij van de laatste beweging
 const moveCooldown = 350; 
@@ -573,8 +574,8 @@ const seconden = d.getSeconds();
 if (minuten === 10 || minuten === 20 || minuten === 30 || minuten  === 40 || minuten === 50 || minuten === 0 && seconden === 0){
 hoeveelste = 0;
 }
-if (seconden === 10 || seconden === 20 || seconden === 30 || seconden === 40 || seconden === 50 || seconden === 0){
-hoeveelste = seconden/10;
+if (seconden === 10 || seconden === 20 || seconden === 30 || seconden === 40 || seconden === 50 || seconden === 0 || seconden === 5 || seconden === 15 || seconden === 25 || seconden === 35 || seconden === 45 || seconden === 55){
+hoeveelste = seconden/5;
 var selected = document.getElementById("cadeau");
 yp = yposities[hoeveelste];
 xp = xposities[hoeveelste];
