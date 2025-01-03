@@ -50,7 +50,7 @@ position:absolute;
 top:0px;
 left:0px;
 transition: 0.15s;
-background:url(pinguin22.png);
+background:url(pinguin.png);
 background-size: cover;
 background-color:rgba(0,0,0,0);
 }
@@ -113,15 +113,16 @@ top:50%;
 left:50%;
 transform:translate(-50%, -50%);
 z-index:999;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 select{
 border-radius:5px;
 position:absolute;
 top:50%;
 left:50%;
+border:#0078D7 2px solid;
 transform:translate(-50%, -50%);
 font-weight:bold;
-border: 1px solid #0078D7;
 }
 #joinbut{
 position:absolute;
@@ -218,11 +219,11 @@ z-index:999;
 .rechtknop{
 display:block;
 padding:0;
-width:14vw;
-height:14vw;
+width:15vw;
+height:15vw;
 border-radius:15px;
 position:absolute;
-top:85%;
+top:95%;
 left:130%;
 border:none;
 outline:none;
@@ -231,11 +232,11 @@ font-size:5vw;
 }
 .linkknop{
 display:block;
-width:14vw;
-height:14vw;
+width:15vw;
+height:15vw;
 border-radius:15px;
 position:absolute;
-top:85%;
+top:95%;
 left:20%;
 border:none;
 outline:none;
@@ -243,16 +244,190 @@ transform:translate(-50%, -50%);
 font-size:5vw;
 }
 #bovknop{
-top:50%;
+top:60%;
 }
 #linknop{
-top:50%;
+top:60%;
 }
+#cadeauopener{
+width:200vw;
+height:200vh;
+margin:0;
+transition:0.5s;
+  background-size: cover;
+display:none;
+z-index:16;
+position:absolute;
+top:75%;
+left:75%;
+transform: translate(-50%, -50%);
+}
+#skin{
+position:absolute;
+top:75%;
+left:75%;
+transform: translate(-50%, -50%);
+width:30vw;
+height:30vw;
+transition:3s;
+opacity:0;
+}
+#cade{
+position:absolute;
+top:75%;
+left:75%;
+transform: translate(-50%, -50%);
+width:80vw;
+height:140vh;
+transition:0.5s;
+}
+#wegknop{
+background-color: rgb(62, 62, 255);
+color:white;
+border-radius:5px;
+display:none;
+border:none;
+outline:none;
+width:15vw;
+height:4vw;
+font-family:arial;
+font-size:3vw;
+padding:0;
+z-index:17;
+}
+}
+#onderste{
+width:30vw;
+height:25vw;
+background:url("https://images.saatchiart.com/saatchi/2090361/art/9789227/8852285-VQSVMPJN-7.jpg");
+background-size:cover;
+position:absolute;
+top:60%;
+left:50%;
+transform: translate(-50%, -50%);
+z-index:8;
+border-radius: 0px 0px 5px 5px;
+border:1px black solid;
+}
+#bovenste{
+width:32vw;
+height:5vw;
+background:url("https://images.saatchiart.com/saatchi/2090361/art/9789227/8852285-VQSVMPJN-7.jpg");
+background-size:cover;
+position:absolute;
+top:25%;
+left:50%;
+border-radius: 5px 5px 0px 0px;
+transform: translate(-50%, -50%);
+z-index:9;
+border:1px black solid;
+transition:0.5s;
+}
+#cade{
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%, -50%);
+width:40vw;
+height:70vh;
+transition:0.5s;
+}
+#cade:hover .bovenste{
+top:5%;
+transition:0.5s;
+opacity:0;
+}
+#cade:hover #onderste{
+transition:0.5s;
+opacity:0;
+}
+#cade:hover{
+transition:0.5s;
+width:100%;
+height:100%;
+background:url(/skinunlock.gif);
+background-size:cover;
+}
+body{
+margin:0;
+padding:0;
+
+}
+#cade:hover #skin{
+transition:3s;
+opacity:1;
+}
+#skin{
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%, -50%);
+width:30vw;
+height:30vw;
+transition:3s;
+opacity:0;
+}
+#rarity{
+position:absolute;
+top:10%;
+left:50%;
+transform: translate(-50%, -50%);
+transition:0.4s;
+opacity:0;
+font-family:arial;
+color:white;
+font-size:3vw;
+}
+#cade:hover #rarity{
+transition:0.4s;
+opacity:1;
+}
+#wegknop{
+background-color: rgb(62, 62, 255);
+color:white;
+position:absolute;
+top:5vh;
+left:8vw;
+border-radius:5px;
+display:none;
+border:none;
+outline:none;
+width:15vw;
+height:4vw;
+font-family:arial;
+font-size:3vw;
+padding:0;
+transform: translate(-50%, -50%);
+}
+#cadeauopener{
+width:150vw;
+height:150vh;
+margin:0;
+padding:0;
+transition:0.5s;
+background:url("https://i.redd.it/xe7u98r50me41.jpg");
+background-size: cover;
+display:none;
+z-index:16;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+#cadeauopener::-webkit-scrollbar {
+  display: none;
 }
 </style>
-    <link rel="manifest" href="/kerstgame/manifest.json?v=random123">
 </head>
 <body onload="muziek(),hoelaatishet()">
+  <div id="cadeauopener">
+    <div onmouseenter="welke()" id="cade">
+    <div class="bovenste"id="bovenste"></div>
+    <div id="onderste"></div>
+    <h2 id="rarity"></h2>
+    <div id="skin"></div>
+    </div>
+    </div>
+    <button id="wegknop" onmouseenter="reset()" onclick="reset()">Next</button>
   <div id="scoreboard">
     <h2>Scoreboard</h2>
     <ul id="players">
@@ -269,8 +444,8 @@ top:50%;
 </div>
 <button onclick="nrboven()" id="bovknop" class="rechtknop">⬆️</button>
 <button onclick="nrrechts()"  class="rechtknop">➡️</button>
-<button onclick="nronder()"  class="linkknop">⬇️</button>
-<button onclick="nrlinks()"  id="linknop" class="linkknop">⬅️</button>
+<button onclick="nronder()"  id="linknop" class="linkknop">⬇️</button>
+<button onclick="nrlinks()"  class="linkknop">⬅️</button>
 <div id="speelveld2">
   <div id="cadeau"></div>
 </div>
@@ -281,7 +456,7 @@ top:50%;
 <div class="div" id="player2"></div>
 </div>
 <audio loop="true"id = "Any">
-    <source src = "https://larsv2801.github.io/kerstgame/Winters_dream.mp3">
+    <source src = "/Winters_dream.mp3">
 </audio>
 <script>
     function muziek(){
@@ -697,6 +872,9 @@ function getscores(){
 fetch("https://broad-bramble-maraca.glitch.me/1", requestOptions)
 .then((response) => response.json())
 .then((result) => {
+  if (result.score1 % 30 === 0 && result.score1 != 0) {
+  toon();
+}
   const playe = scores.find(p => p.name === "Player 1");
   
   if (playe) {
@@ -740,13 +918,54 @@ const player = scores.find(p => p.name === "Player 2");
 setTimeout(getscores,1000);
 
 setInterval(getscores, 3000);
-
-    if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/kerstgame/service-worker.js')
-    .then(() => console.log('Service Worker Registered'))
-    .catch(err => console.error('Service Worker Registration Failed:', err));
-}
-
+</script>
+<script>
+  var nummer = 0;
+  function toon(){
+  document.getElementById("cadeauopener").style.display = "block";
+  document.getElementById("cade").style.display = "block";
+  document.getElementById("wegknop").style.display = "block";
+  document.getElementById("speelveld").style.display = "none";
+  document.getElementById("speelveld2").style.display = "none";
+  document.getElementById("scoreboard").style.display = "none";
+  }
+  function welke(){
+  document.getElementById("wegknop").style.display = "block";
+  nummer = Math.floor(Math.random() * 101);
+  console.log(nummer);
+  if (nummer <= 50){
+  document.getElementById("rarity").innerHTML = "rare";
+  document.getElementById("skin").style.background = 'url(/pinguin22.png)';
+  document.getElementById("skin").style.backgroundSize = 'cover';
+  } else if (nummer <= 75){
+  document.getElementById("skin").style.background = 'url(/ijsblok-srare.png)';
+  document.getElementById("skin").style.backgroundSize = 'cover';
+  document.getElementById("rarity").innerHTML = "super rare";
+  } else if (nummer <= 90){
+  document.getElementById("skin").style.background = 'url(/kerstman-epic.png)';
+  document.getElementById("skin").style.backgroundSize = 'cover';
+  document.getElementById("rarity").innerHTML = "epic";
+  } else if (nummer <= 99){
+  document.getElementById("skin").style.background = 'url(/gingerbread-mytic.png)';
+  document.getElementById("skin").style.backgroundSize = 'cover';
+  document.getElementById("rarity").innerHTML = "mythic";
+  } else if (nummer <= 100){
+  document.getElementById("skin").style.background = 'url(/chocomelk-legendary.png)';
+  document.getElementById("skin").style.backgroundSize = 'cover';
+  document.getElementById("rarity").innerHTML = "legendary";
+  }
+  updateScore(player);
+  }
+  function reset(){
+  nummer = 0;
+  document.getElementById("skin").style.background = 'url(/reset.png)';
+  document.getElementById("skin").style.backgroundSize = 'cover';
+  document.getElementById("wegknop").style.display = "none";
+  document.getElementById("cadeauopener").style.display = "none";
+  document.getElementById("speelveld").style.display = "block";
+  document.getElementById("speelveld2").style.display = "block";
+  document.getElementById("scoreboard").style.display = "block";
+  }
 </script>
 </body>
 </html>
