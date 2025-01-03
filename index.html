@@ -426,7 +426,7 @@ transform: translate(-50%, -50%);
 </style>
 </head>
 <body onload="muziek(),hoelaatishet()">
-<button id="watchAdButton">Bekijk Advertentie</button>
+<button onclick="reclame()" id="watchAdButton">Bekijk Advertentie</button>
   <div id="cadeauopener">
     <div onmouseenter="welke()" id="cade">
     <div class="bovenste"id="bovenste"></div>
@@ -996,14 +996,14 @@ admob.rewarded.load({
 });
 
 // Knop om een belonende advertentie te tonen
-document.getElementById("watchAdButton").addEventListener("click", () => {
+function reclame(){
     console.log("Advertentie bekeken");// Laat de belonende advertentie zien wanneer de knop wordt geklikt
     admob.rewarded.show().then(() => {
         console.log("Advertentie getoond");
     }).catch((err) => {
         console.error("Fout bij het tonen van de advertentie:", err);
     });
-});
+};
 
 // Beloning na het bekijken van de advertentie
 admob.rewarded.on("reward", (reward) => {
