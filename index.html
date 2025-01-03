@@ -974,27 +974,43 @@ setInterval(getscores, 3000);
   document.getElementById("speelveld2").style.display = "block";
   document.getElementById("scoreboard").style.display = "block";
   }
-    const appId = "ca-app-pub-8139287111768871~9692094164";
-const adUnitId = "ca-app-pub-8139287111768871/3001433437";
+const appId = "ca-app-pub-8139287111768871~9692094164";
+const adUnitId = "ca-app-pub-3940256099942544/5224354917"; // Test advertentie-eenheid-ID
 
 // Initialiseer AdMob
-admob.start()
-    .then(() => console.log("AdMob gestart"))
-    .catch((err) => console.error("Fout bij starten van AdMob:", err));
+admob.start().then(() => {
+    admob.setAppMuted(true); // Geluid dempen
+    admob.setAppVolume(0);  // Volume uitzetten (optioneel)
+}).catch((err) => {
+    console.error("Fout bij starten van AdMob:", err);
+});
+
+// Laad de belonende advertentie
+admob.rewarded.load({
+    adUnitId: adUnitId, // Gebruik test-ID
+    testMode: true,     // Specificeer dat je testmodus gebruikt
+}).then(() => {
+    console.log("Testadvertentie geladen");
+}).catch((err) => {
+    console.error("Fout bij het laden van de advertentie:", err);
+});
 
 // Knop om een belonende advertentie te tonen
 document.getElementById("watchAdButton").addEventListener("click", () => {
-    admob.rewarded
-        .load({ adUnitId })
-        .then(() => admob.rewarded.show())
-        .catch((err) => console.error("Fout bij laden/tonen van advertentie:", err));
+    // Laat de belonende advertentie zien wanneer de knop wordt geklikt
+    admob.rewarded.show().then(() => {
+        console.log("Advertentie getoond");
+    }).catch((err) => {
+        console.error("Fout bij het tonen van de advertentie:", err);
+    });
 });
 
-// Beloning na advertentie
+// Beloning na het bekijken van de advertentie
 admob.rewarded.on("reward", (reward) => {
     console.log("Beloning ontvangen:", reward);
-    // Hier voeg je de beloning toe aan je game (bijv. extra punten of levens)
+    // Voeg hier je logica toe voor wat de gebruiker krijgt (bijv. extra punten of items)
 });
+
 </script>
 </body>
 </html>
