@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://apis.google.com/js/api.js"></script>
 <style>
     #scoreboard {
       width: 300px;
@@ -426,7 +425,6 @@ transform: translate(-50%, -50%);
 </style>
 </head>
 <body onload="muziek(),hoelaatishet()">
-<button onclick="reclame()" id="watchAdButton">Bekijk Advertentie</button>
   <div id="cadeauopener">
     <div onmouseenter="welke()" id="cade">
     <div class="bovenste"id="bovenste"></div>
@@ -974,42 +972,6 @@ setInterval(getscores, 3000);
   document.getElementById("speelveld2").style.display = "block";
   document.getElementById("scoreboard").style.display = "block";
   }
-const appId = "ca-app-pub-8139287111768871~9692094164";
-const adUnitId = "ca-app-pub-3940256099942544/5224354917"; // Test advertentie-eenheid-ID
-
-// Initialiseer AdMob
-admob.start().then(() => {
-    admob.setAppMuted(true); // Geluid dempen
-    admob.setAppVolume(0);  // Volume uitzetten (optioneel)
-}).catch((err) => {
-    console.error("Fout bij starten van AdMob:", err);
-});
-
-// Laad de belonende advertentie
-admob.rewarded.load({
-    adUnitId: adUnitId, // Gebruik test-ID
-    testMode: true,     // Specificeer dat je testmodus gebruikt
-}).then(() => {
-    console.log("Testadvertentie geladen");
-}).catch((err) => {
-    console.error("Fout bij het laden van de advertentie:", err);
-});
-
-// Knop om een belonende advertentie te tonen
-function reclame(){
-    console.log("Advertentie bekeken");// Laat de belonende advertentie zien wanneer de knop wordt geklikt
-    admob.rewarded.show().then(() => {
-        console.log("Advertentie getoond");
-    }).catch((err) => {
-        console.error("Fout bij het tonen van de advertentie:", err);
-    });
-};
-
-// Beloning na het bekijken van de advertentie
-admob.rewarded.on("reward", (reward) => {
-    console.log("Beloning ontvangen:", reward);
-    // Voeg hier je logica toe voor wat de gebruiker krijgt (bijv. extra punten of items)
-});
 
 </script>
 </body>
