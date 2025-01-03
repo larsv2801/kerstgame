@@ -41,6 +41,12 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "monochrome"
+        },
+        {
+            "src": "monologo-144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "monochrome"
         }
     ]
 }
