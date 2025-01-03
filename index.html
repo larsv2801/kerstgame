@@ -997,7 +997,7 @@ admob.rewarded.load({
 
 // Knop om een belonende advertentie te tonen
 document.getElementById("watchAdButton").addEventListener("click", () => {
-    // Laat de belonende advertentie zien wanneer de knop wordt geklikt
+    console.log("Advertentie bekeken");// Laat de belonende advertentie zien wanneer de knop wordt geklikt
     admob.rewarded.show().then(() => {
         console.log("Advertentie getoond");
     }).catch((err) => {
